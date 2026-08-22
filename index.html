@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="hi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover" />
+  <title>Login — Mobile style</title>
+  <style>
+    :root{
+      --card-w:360px;
+      --card-h:780px;
+      --input-bg: rgba(255,255,255,0.9);
+      --muted:#6b7280;
+      --accent1:#0a66ff;
+      --accent2:#0066d6;
+      --outline:#cfe6ff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    html,body{height:100%; margin:0; background:linear-gradient(180deg,#f7f7fb,#fff); display:flex; align-items:center; justify-content:center; padding:20px}
+
+    .phone {
+      width:var(--card-w);
+      height:var(--card-h);
+      border-radius:28px;
+      overflow:hidden;
+      box-shadow:0 20px 50px rgba(10,10,10,0.18);
+      border:1px solid rgba(0,0,0,0.04);
+      background: linear-gradient(135deg, rgba(255,245,247,0.9), rgba(240,255,255,0.9));
+      position:relative;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+    }
+
+    .top {
+      padding:34px 26px 10px;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      width:100%;
+      box-sizing:border-box;
+      gap:6px;
+    }
+
+    /* Replaced logo with centered brand text */
+    .brand-text {
+      font-size:28px;
+      font-weight:700;
+      letter-spacing:0.6px;
+      color:#0b1220;
+      margin-top:6px;
+      text-align:center;
+    }
+    .subtitle { font-size:13px; color:var(--muted); margin-top:6px; opacity:0.9 }
+
+    .form {
+      width:86%;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+      margin-top:10px;
+    }
+
+    .field label{display:block;font-size:13px;color:var(--muted);margin-bottom:6px}
+    .input {
+      background:var(--input-bg);
+      border:1px solid #e7eef7;
+      height:48px;
+      border-radius:12px;
+      padding:10px 14px;
+      box-sizing:border-box;
+      font-size:15px;
+      color:#0b1220;
+      outline:none;
+      transition:box-shadow .12s, border-color .12s;
+    }
+    .input:focus{box-shadow:0 8px 24px rgba(10,66,255,0.08); border-color:rgba(10,66,255,0.18)}
+
+    .pw-wrap{display:flex; align-items:center}
+    .login-btn{
+      margin-top:8px;
+      height:48px;
+      border-radius:24px;
+      border:0;
+      background: linear-gradient(90deg,var(--accent1),var(--accent2));
+      color:white; font-weight:700; font-size:16px; cursor:pointer;
+      box-shadow: 0 8px 20px rgba(10,80,255,0.14);
+    }
+
+    .forgot {
+      margin-top:8px;
+      text-align:center;
+      color:#1f2937;
+      opacity:0.8;
+      font-size:14px;
+      text-decoration:none;
+      display:block;
+    }
+
+    .bottom {
+      margin-top:auto;
+      width:100%;
+      padding:18px 20px 24px;
+      box-sizing:border-box;
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      gap:12px;
+    }
+
+    .create {
+      width:86%;
+      height:44px;
+      border-radius:22px;
+      border:1px solid var(--outline);
+      background:transparent;
+      color:var(--accent1);
+      display:flex; align-items:center; justify-content:center;
+      font-weight:600;
+      cursor:pointer;
+    }
+
+    .meta {font-size:13px;color:var(--muted); opacity:0.9; margin-top:4px}
+    .home-ind { width:70px; height:6px; border-radius:10px; background:rgba(0,0,0,0.08); margin-top:6px; }
+
+    @media (max-width:420px){
+      .phone{transform:scale(0.95)}
+    }
+
+    @media (max-width:360px){
+      html,body{padding:12px}
+      .phone{width:320px}
+    }
+  </style>
+</head>
+<body>
+  <div class="phone" role="application" aria-label="Mobile login">
+    <div class="top">
+      <!-- removed logo image, showing brand text instead -->
+      <div class="brand-text" id="brandText">instgram</div>
+      <div class="subtitle">Welcome back</div>
+    </div>
+
+    <form class="form" id="loginForm" autocomplete="on" novalidate>
+      <div class="field">
+        <label for="user">Username, email or mobile number</label>
+        <input id="user" class="input" type="text" name="user" placeholder="" />
+      </div>
+
+      <div class="field">
+        <label for="pwd">Password</label>
+        <div class="pw-wrap">
+          <input id="pwd" class="input" type="password" name="password" placeholder="" />
+        </div>
+      </div>
+
+      <button type="submit" class="login-btn">Log in</button>
+
+      <a href="#" class="forgot" id="forgotBtn">Forgot password?</a>
+    </form>
+
+    <div class="bottom">
+      <button class="create" id="createBtn">Create new account</button>
+      <div class="meta">Meta</div>
+      <div class="home-ind" aria-hidden="true"></div>
+    </div>
+  </div>
+
+  <script>
+    // basic UI handlers
+    document.getElementById('loginForm').addEventListener('submit', (e) => {
+      e.preventDefault();
+      alert('This is a UI demo. Connect to your backend to authenticate users.');
+    });
+
+    document.getElementById('createBtn').addEventListener('click', () => {
+      alert('Create account flow — connect to your sign-up page.');
+    });
+
+    document.getElementById('forgotBtn').addEventListener('click', (e) => {
+      e.preventDefault();
+      alert('Forgot password flow — connect to your backend (POST /auth/forgot-password).');
+    });
+  </script>
+</body>
+</html>
